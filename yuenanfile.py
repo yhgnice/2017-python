@@ -10,12 +10,12 @@ import shutil
 import time
 from cmdcolor import *
 
-# env.hosts = ['61.160.242.95:59878']
+ 
 
-env.hosts = ['60.55.38.29']
-env.port = 59878
+env.hosts = ['IP address']
+env.port = 22
 env.user = 'root'
-env.key_filename = r"D:\\Sessions\\key\\Identity_aj2"
+env.key_filename = r"D:\\Sessions\\key\\keyfile"
 
 
 @runs_once
@@ -90,12 +90,7 @@ def localrelease(path):
 	print os.getcwd()
 	os.system('ant release')
 
-
-# os.system('cmd /c call  C:\Windows\System32\java1.6.bat')
-# os.system(r'E:\aojian2\guonei\aojian_builder\java1.6.bat')
-# result = os.popen('C:\Windows\System32\java1.6.bat')
-# print result
-# local()
+ 
 
 @task
 def go():
@@ -109,6 +104,6 @@ def go():
 
 
 dirs = time.strftime("%m%d", time.localtime())
-filepath = r'E:\aojian2\guonei\aojian_builder\buildtmp'
+filepath = r'c:\item_builder\buildtmp'
 if __name__ == '__main__':
 	go()
