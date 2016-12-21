@@ -48,8 +48,8 @@ def getSchema(file, colnameindex=0, by_index=0):
 		row = table.row_values(0)  # 读取第一行数据标头
 		if row:
 			for line in row:
-				t_ilsts.append(line)
-				tableDic[line] = []
+				t_ilsts.append(str(line).lower())
+				tableDic[str(line).lower()] = []
 				tableDic['yhglist'] = t_ilsts
 		return tableDic
 	except Exception, e:
@@ -108,9 +108,9 @@ def getTable(table_info):
 	tablledic = {}
 	for line in table_info:
 		if 'int' in line[1]:
-			tablledic[line[0]] = [1, 0]
+			tablledic[str(line[0]).lower()] = [1, 0]
 		else:
-			tablledic[line[0]] = [0, 0]
+			tablledic[str(line[0]).lower()] = [0, 0]
 	return tablledic
 
 
@@ -196,13 +196,14 @@ def main(table):
 	# 获取数据获取第一行数据表头
 	excelSchema = getSchema(file=table)  # dict head
 	table = os.path.basename(table).split('.')[0]
-
+	# print excelSchema
 
 	print  '{table}\ttotal data:'.format(table=table), len(data)
 	# 获取数据库表结构信息
 	table_info = getTableInfo(table)  # table_info
 
 	schemaTable = getTable(table_info=table_info)
+	# print schemaTable
 	diff_col(excelSchema, schemaTable)
 
 
